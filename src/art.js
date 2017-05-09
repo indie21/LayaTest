@@ -1,5 +1,5 @@
 ////////////////////////////////////////
-// Char
+// Charn
 
 function Char(x,y) {
     var shape = new laya.display.Sprite();
@@ -14,7 +14,7 @@ function Char(x,y) {
 }
 
 Char.prototype.BeginUpdatePos = function(v) {
-    Laya.timer.frameLoop(1, this, function(){
+    Laya.timer.frameLoop(1, this, function() {
         this.Sprite.x = v.x;
         this.Sprite.y = v.y;
     });

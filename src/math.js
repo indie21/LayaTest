@@ -6,15 +6,15 @@ function Vector2d(x,y) {
     this.y = y;
 }
 
-Vector2d.prototype.LengthSquared=function() {
+Vector2d.prototype.LengthSquared = function() {
     return this.x*this.x + this.y*this.y;
 };
 
-Vector2d.prototype.Length=function() {
+Vector2d.prototype.Length = function() {
     return Math.sqrt(this.x*this.x + this.y*this.y);
 };
 
-Vector2d.prototype.Add=function(vec) {
+Vector2d.prototype.Add = function(vec) {
     this.x += vec.x;
     this.y += vec.y;
 };

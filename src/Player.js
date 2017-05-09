@@ -1,5 +1,3 @@
-
-
 // 玩家对象
 function Player(x,y) {
     //math
