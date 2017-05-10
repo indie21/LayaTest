@@ -42,6 +42,6 @@ Vehicle.prototype.StopMove = function() {
     Laya.timer.clear(this, this.moveUpdate);
 };
 
-Vehicle.prototype.Setvelocity = function(vec) {
-    this.velocity = Vec;
+Vehicle.prototype.SetVelocity = function(vec) {
+    this.velocity = vec;
 };

@@ -16,6 +16,6 @@ function Char(x,y) {
 Char.prototype.BeginUpdatePos = function(v) {
     Laya.timer.frameLoop(1, this, function() {
         this.Sprite.x = v.x;
-        this.Sprite.y = v.y;
+        this.Sprite.y =  MapHeight-v.y;
     });
 };

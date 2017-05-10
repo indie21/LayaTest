@@ -1,9 +1,19 @@
 function TapJoy() {
-}
-
-TapJoy.prototype.Setup = function () {
+    this.touchStatus = 1;
     this.createInteractiveTarget();
     this.createLogger();
+    this.handler=null;
+}
+
+TapJoy.prototype.Event = {
+    Left: "Left",
+    Right: "Right",
+    Up: "Up",
+    Down: "Down"
+};
+
+TapJoy.prototype.Setup = function (handler) {
+    this.handler=handler;
 };
 
 TapJoy.prototype.createInteractiveTarget = function () {
@@ -63,10 +73,33 @@ TapJoy.prototype.mouseHandler = function (e) {
 
     switch(e.type) {
     case Event.MOUSE_DOWN:
-				this.appendText("\n————————\n左键按下"+x+" "+y);
+        this.touchStatus = 2;
+        this.prevStageX = e.stageX;
+        this.prevStageY = e.stageY;
 				break;
+
 		case Event.MOUSE_UP:
-				this.appendText("\n左键抬起");
+        if(this.touchStatus == 2) {
+            this.touchStatus = 1;
+        }
+
+        if(Math.abs(x - this.prevStageX) > Math.abs(y - this.prevStageY)) {
+            if(x < this.prevStageX) {
+                this.appendText("\nleft\n");
+                this.handler(this.Event.Left);
+            }else{
+                this.appendText("\nright\n");
+                this.handler(this.Event.Right);
+            }
+        }else{
+            if(y < this.prevStageY) {
+                this.appendText("\nup\n");
+                this.handler(this.Event.Up);
+            }else{
+                this.appendText("\ndown\n");
+                this.handler(this.Event.Down);
+            }
+        }
 				break;
     }
 };
